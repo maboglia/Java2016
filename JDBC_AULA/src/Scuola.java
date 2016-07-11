@@ -1,6 +1,7 @@
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.PreparedStatement;
 import java.util.ArrayList;
 
 import java.sql.Connection;
@@ -18,13 +19,38 @@ public class Scuola {
 			//2 - preparare uno statement
 			
 			Statement statement = null;
-			
-			// ricevere un result set
+			PreparedStatement prepStat = null;
+			//3 ricevere un result set
 			
 			ResultSet resultSet = null;
 	
+			//4 creo un arraylist di oggetti di classe studenteDAO
+			
 			ArrayList<StudentiDAO>	studenti = new ArrayList<>();
 	
+			
+			public void addStudent(String nome, String cognome){
+				
+				try {
+					
+					String query = "insert into studenti set Nome = ?, Cognome = ? ";
+					prepStat = conn.prepareStatement(query);
+					
+					prepStat.setString(1, nome);
+					prepStat.setString(2, cognome);
+					
+					prepStat.execute();
+										
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.getMessage();e.printStackTrace();
+				}				
+				
+				
+				
+			}
+			
+			
 			public ArrayList<StudentiDAO> listStudenti(){
 				
 				try {

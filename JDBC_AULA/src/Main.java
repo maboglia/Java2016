@@ -30,6 +30,8 @@ public class Main {
 //			System.out.println(stud.getCognome()  + stud.getNome() );
 //		} 
 		
+		miaScuola.addStudent("Paolo", "Bogliaccino");
+		
 		for (StudentiDAO stud : miaScuola.listStudenti()) {
 			System.out.println(stud.getCognome()  + stud.getNome() );
 		} 
